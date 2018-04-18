@@ -13,7 +13,9 @@ link: https://github.com/kyrie403
 
 
 
-Requirements
+
+
+# Requirements
 
 MYSQL > 5.0
 
@@ -21,7 +23,9 @@ SafeDog V4.0
 
 
 
-Usage:
+
+
+# Usage:
 
 python -u http://test.com/test.php?id=1 --tamper=bypasssafedogv4 --random-agent --dbms MYSQL --delay=0.5
 
