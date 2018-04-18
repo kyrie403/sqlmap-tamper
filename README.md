@@ -1,7 +1,6 @@
 # sqlmap-tamper
 sqlmap bypass tamper
 
-bypasssafedogv4.py
 
 version: 1.0
 
