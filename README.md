@@ -1,5 +1,4 @@
 # sqlmap-tamper
-sqlmap bypass tamper
 
 
 Bypass SafeDog V4.0
