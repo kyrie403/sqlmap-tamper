@@ -3,9 +3,17 @@ sqlmap bypass tamper
 
 
 Bypass SafeDog V4.0
+
+
 Version: 1.0
+
+
 Author: Kyrie403
+
+
 Copyright (c) Kyrie403
+
+
 GitHub: https://github.com/kyrie403
 
 
