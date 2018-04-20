@@ -2,7 +2,7 @@
 
 """
 Bypass SafeDog V4.0
-Version: 1.0
+Version: 1.1
 Date: 2018-04-18
 Update: 2018-04-20
 Author: Kyrie403
